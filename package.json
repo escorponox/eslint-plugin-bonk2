@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-bonk2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ESLint rules",
   "main": "index.js",
   "repository": "https://github.com/escorponox/eslint-plugin-bonk2",
