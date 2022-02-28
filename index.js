@@ -47,8 +47,8 @@ module.exports = {
   configs: {
     recommended: {
       rules: {
-        "no-smart-import-rename": "error",
-        "no-untyped-apollo-hooks": "error",
+        "bonk2/no-smart-import-rename": "error",
+        "bonk2/no-untyped-apollo-hooks": "error",
       },
     },
   },
