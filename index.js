@@ -29,14 +29,40 @@ module.exports = {
         return {
           Identifier: function (node) {
             if (
-              node.name === "useQuery" &&
+              apolloHooks.includes(node.name) &&
               node.parent.type === "CallExpression" &&
               (node.parent.typeParameters === undefined ||
-                node.parent.typeParameters.params.length < 2)
+                node.parent.typeParameters.params.length < 2 ||
+                node.parent.typeParameters.params.some(
+                  (param) => param.type === "TSAnyKeyword"
+                ))
             ) {
               context.report({
                 node: node,
                 message: "Type your Apollo hooks, you won't regret it",
+              });
+            }
+          },
+        };
+      },
+    },
+    "no-cheating-types-apollo-hooks": {
+      create: function (context) {
+        return {
+          Identifier: function (node) {
+            if (
+              apolloHooks.includes(node.name) &&
+              node.parent.type === "CallExpression" &&
+              node.parent.typeParameters !== undefined &&
+              node.parent.typeParameters.params.some(
+                (param) =>
+                  param.type === "TSAnyKeyword" ||
+                  param.type === "TSTypeLiteral"
+              )
+            ) {
+              context.report({
+                node: node,
+                message: "Don't cheat, literal and any are bad for everybody",
               });
             }
           },
@@ -49,6 +75,7 @@ module.exports = {
       rules: {
         "bonk2/no-smart-import-rename": "error",
         "bonk2/no-untyped-apollo-hooks": "error",
+        "bonk2/no-cheating-types-apollo-hooks": "error",
       },
     },
   },
