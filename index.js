@@ -44,4 +44,12 @@ module.exports = {
       },
     },
   },
+  configs: {
+    recommended: {
+      rules: {
+        "no-smart-import-rename": "error",
+        "no-untyped-apollo-hooks": "error",
+      },
+    },
+  },
 };
