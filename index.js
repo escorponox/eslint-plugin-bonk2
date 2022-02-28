@@ -32,10 +32,7 @@ module.exports = {
               apolloHooks.includes(node.name) &&
               node.parent.type === "CallExpression" &&
               (node.parent.typeParameters === undefined ||
-                node.parent.typeParameters.params.length < 2 ||
-                node.parent.typeParameters.params.some(
-                  (param) => param.type === "TSAnyKeyword"
-                ))
+                node.parent.typeParameters.params.length < 2)
             ) {
               context.report({
                 node: node,
