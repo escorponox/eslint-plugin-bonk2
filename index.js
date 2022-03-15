@@ -75,5 +75,12 @@ module.exports = {
         "bonk2/no-cheating-types-apollo-hooks": "error",
       },
     },
+    lazy: {
+      rules: {
+        "bonk2/no-smart-import-rename": "warn",
+        "bonk2/no-untyped-apollo-hooks": "warn",
+        "bonk2/no-cheating-types-apollo-hooks": "warn",
+      },
+    },
   },
 };
